@@ -1,0 +1,85 @@
+<html>
+<head>
+	<title>shopping cart</title>
+	<style type="text/css">
+		#nav_bar{
+			border: 1px solid black;
+		}
+		form{
+			width: 50%;
+		}
+		label,input {
+			display: inline-block;
+		}
+		label {
+			width: 25%;
+		}
+		input[type="text"] {
+			width: 75%;
+		}
+	</style>
+</head>
+<body>
+	<div id="nav_bar">
+		<h1>Dojo eCommerce</h1>
+		<a href="">Shopping Cart()</a>
+	</div>
+	<table>
+		<thead>
+			<tr>
+				<th>Item</th>
+				<th>Price</th>
+				<th>Quantity</th>
+				<th>Total</th>
+			</tr>
+		</thead>
+		<tfoot>
+			<tr>
+				<td colspan="4">
+					<p>Total: 49.96</p>
+					<a href="">Continue Shopping</a>
+				</td>
+			</tr>
+		</tfoot>
+		<tbody>
+			<tr>
+				<td>Black Belt for Staff</td>
+				<td>$19.99</td>
+				<td>1 <a href="">update</a> remove</td>
+				<td>$19.99</td>
+			</tr>
+			<tr>
+				<td>CodingDojo Cups</td>
+				<td>$9.99</td>
+				<td>3 <a href="">update</a> remove</td>
+				<td>$29.97</td>
+			</tr>
+		</tbody>
+	</table>
+	<form>
+		<h3>Shipping Information</h3>
+		<label>First Name:</label><input type="text">
+		<label>Last Name:</label><input type="text">
+		<label>Address:</label><input type="text">
+		<label>Address 2:</label><input type="text">
+		<label>City:</label><input type="text">
+		<label>State:</label><input type="text">
+		<label>Zipcode:</label><input type="text">	
+
+		<h3>Billing Information</h3>
+		<label><input type="checkbox"> Same as Shipping</label>
+		<label>First Name:</label><input type="text">
+		<label>Last Name:</label><input type="text">
+		<label>Address:</label><input type="text">
+		<label>Address 2:</label><input type="text">
+		<label>City:</label><input type="text">
+		<label>State:</label><input type="text">
+		<label>Zipcode:</label><input type="text">
+		<hr>
+		<label>Card #:</label><input type="text">
+		<label>Security Code:</label><input type="text">
+		<label>Expiration:</label><input type="text" placeholder="MM">/<input type="text" placeholder="(year)">
+		<input type='submit' value="Pay">
+	</form>
+</body>
+</html>

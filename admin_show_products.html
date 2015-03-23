@@ -1,0 +1,117 @@
+<html>
+<head>
+	<title>Show Products</title>
+	<style type="text/css">
+		#nav_bar{
+			border: 1px solid black;
+		}
+		label,input[type="text"],textarea {
+			display: inline-block;
+			width: 50%;
+		}
+		#edit {
+			padding: 0 12.5%;
+		}
+		#edit label {
+			text-align: right;
+			padding-right: 1em;
+			box-sizing: border-box;
+		}
+	</style>
+</head>
+<body>
+	<div id="nav_bar">
+		<h1>Dashboard</h1>
+		<ul>
+			<li>Orders</li>
+			<li>Products</li>
+			<li>log off</li>
+		</ul>
+	</div>
+	<form>
+		<input type="text" placeholder="search">
+		<input type="submit" value="Add new Product">
+	</form>
+	<table>
+		<thead>
+			<tr>
+				<th>Picture</th>
+				<th>ID</th>
+				<th>Name</th>
+				<th>Inventory</th>
+				<th>Quantity sold</th>
+				<th>Action</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td><img src=""></td>
+				<td>1</td>
+				<td>T-Shirt</td>
+				<td>123</td>
+				<td>1000</td>
+				<td><a href="">edit</a> <a href="">delete</a></td>
+			</tr>
+			<tr>
+				<td><img src=""></td>
+				<td>1</td>
+				<td>T-Shirt</td>
+				<td>123</td>
+				<td>1000</td>
+				<td><a href="">edit</a> <a href="">delete</a></td>
+			</tr>
+			<tr>
+				<td><img src=""></td>
+				<td>1</td>
+				<td>T-Shirt</td>
+				<td>123</td>
+				<td>1000</td>
+				<td><a href="">edit</a> <a href="">delete</a></td>
+			</tr>
+			<tr>
+				<td><img src=""></td>
+				<td>1</td>
+				<td>T-Shirt</td>
+				<td>123</td>
+				<td>1000</td>
+				<td><a href="">edit</a> <a href="">delete</a></td>
+			</tr>
+			<tr>
+				<td><img src=""></td>
+				<td>1</td>
+				<td>T-Shirt</td>
+				<td>123</td>
+				<td>1000</td>
+				<td><a href="">edit</a> <a href="">delete</a></td>
+			</tr>
+
+		</tbody>
+	</table>
+	<ul class="pagination">
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+			<li>5</li>
+			<li>&rarr;</li>
+	</ul>
+	<hr>
+	<h2>Edit Product - ID 2</h2>
+	<form id="edit">
+		<label>Name:</label><input type="text">
+		<label>Description:</label><textarea></textarea>
+		<label>Categories</label><select>
+			<option>Hat</option>
+			<option>Mug</option>
+			<option>Pant</option>
+			<option>Key Chain</option>
+			<option>Belt</option>
+		</select>
+		<label>or add a new category:</label><input type="text">
+		<label>Images</label><input type="submit" value="Upload">
+		<input type="submit" value="Cancel">
+		<input type="submit" value="Preview">
+		<input type="submit" value="Update">
+	</form>
+</body>
+</html>

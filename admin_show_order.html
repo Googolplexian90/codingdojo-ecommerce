@@ -1,0 +1,81 @@
+<html>
+<head>
+	<title>Show Order</title>
+	<style type="text/css">
+		div{
+			vertical-align: top;
+		}
+		#nav_bar{
+			border: 1px solid black;
+		}
+		#sidebar{
+			display: inline-block;
+			border: 1px solid black;
+			width: 25%;
+		}
+		#content{
+			display: inline-block;
+			border: 1px solid black;
+			width: 74%;
+		}
+	</style>
+</head>
+<body>
+	<div id="nav_bar">
+		<h1>Dashboard</h1>
+		<ul>
+			<li>Orders</li>
+			<li>Products</li>
+			<li>log off</li>
+		</ul>
+	</div>
+	<div id="sidebar">
+		<p>Order ID: 1</p>
+		<p>Customer Shipping Info:<br>
+			name: bob<br>
+			address:123 dojo way<br>
+			city: seattle<br>
+			state: wa<br>
+			zip:98133</p>
+		<p>Customer Billing Info:<br>
+			name: bob<br>
+			address:123 dojo way<br>
+			city: seattle<br>
+			state: wa<br>
+			zip:98133</p>
+	</div>
+	<div id="content">
+	<table>
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Item</th>
+				<th>Price</th>
+				<th>Quantity</th>
+				<th>Total</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>35</td>
+				<td>Black Belt for Staff</td>
+				<td>$19.99</td>
+				<td>1 <a href="">update</a> remove</td>
+				<td>$19.99</td>
+			</tr>
+			<tr>
+				<td>75</td>
+				<td>CodingDojo Cups</td>
+				<td>$9.99</td>
+				<td>3 <a href="">update</a> remove</td>
+				<td>$29.97</td>
+			</tr>
+		</tbody>
+	</table>
+	<p>Status: shipped</p>
+	<p>Sub total: $29.98<br>
+		Shipping: $1.00<br>
+		Total Price: $30.98</p>
+	</div>
+</body>
+</html>
