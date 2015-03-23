@@ -64,6 +64,23 @@ class Products extends CI_Controller {
 		}
 		$this->load->view('products/new');
 	}
+	public function delete($id)
+	{
+		if(!$this->session->userdata('admin'))
+		{
+			redirect('/products');
+		}
+		$this->load->view('products/destroy',array('product'=>$this->Product->show($id)));
+	}
+	public function destroy($id)
+	{
+		if(!$this->session->userdata('admin'))
+		{
+			redirect('/products');
+		}
+		$this->Product->destroy($id);
+		redirect('/dashboard/products');
+	}
 }
 
 //end of products controller
