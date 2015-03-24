@@ -9,7 +9,7 @@
         <title><?= $title ?> | uTunes</title>
         <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="/assets/styles.css">
-        <link rel="favicon" type="image/ico" href="/assets/images/favicon.ico">
+        <link rel="icon" type="images/ico" href="/assets/images/favicon.ico">
     </head>
     <body>
         <div class="container">
