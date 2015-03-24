@@ -1,12 +1,3 @@
-	<style type="text/css">
-		aside,#content{
-			border: 1px solid black;
-		}
-		select{
-			display: inline-block;
-		}
-
-	</style>
 <div class="row">
 	<aside class="col-xs-12 col-sm-4 col-md-3">
 		<form class="form-inline">
@@ -31,7 +22,7 @@
 				<ul class="pager">
 					<li><a href="">first</a></li>
 					<li><a href="">prev</a></li>
-					<li><a href="">2</a></li>
+					<li><span>2</span></li>
 					<li><a href="">last</a></li>
 				</ul>
 			</div>
