@@ -10,7 +10,7 @@ class Products extends CI_Controller {
 		{
 			$this->session->set_userdata('cart',array());
 		}
-		$this->output->enable_profiler();
+		
 	}
 
 	public function index()

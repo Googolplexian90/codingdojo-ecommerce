@@ -1,9 +1,9 @@
 <h1 class="text-center">Admin Login Page</h1>
-<?php if($this->session->flashdata('errors')) { ?>
+<?php if($this->session->flashdata('error')) { ?>
 <div class="row text-danger">
 	<div class="col-xs-12">
-		<h3>There was one or more errors with your submission.</h3>
-		<?php echo $this->session->flashdata('errors'); ?>
+		<h3 class="bg-danger">There was one or more errors with your submission.</h3>
+		<?php echo $this->session->flashdata('error'); ?>
 	</div>
 </div>
 <?php } ?>
