@@ -106,7 +106,8 @@ class Orders extends CI_Controller {
 		$this->form_validation->set_rules($config);
 		if(!$this->form_validation->run())
 		{
-			// Validation failed, return to cart
+			$this->session->set_flashdata('error',validation_errors());
+			redirect('/orders/cart')
 		}
 		else
 		{
@@ -115,6 +116,18 @@ class Orders extends CI_Controller {
 			$this->Order->create($form);
 			redirect('/products');
 		}
+	}
+	function show($id)
+	{
+		if(!$this->session->userdata('admin'))
+		{
+			redirect(base_url());
+		}
+		$this->load->model('Order');
+		$data = $this->Order->show($id);
+		$this->load->view('partials/header');
+		$this->load->view('orders/show');
+		$this->load->view('partials/footer');
 	}
 }
 

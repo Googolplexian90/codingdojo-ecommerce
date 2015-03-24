@@ -42,6 +42,7 @@ class Products extends CI_Controller {
 		$data['images'] = $this->Product->get_images($id);
 		$data['product'] = $product;
 		$data['related'] = $this->Product->find($product['name']);
+		// Need to set up many to many rel with products to fill in the above
 		$this->load->view('products/show',$data);
 		$this->load->view('partials/footer');
 	}
