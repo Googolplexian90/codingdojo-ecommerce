@@ -1,12 +1,22 @@
 <html>
 <head>
-	<title>products</title>
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>uTunes</title>
+
+    <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
 	<style type="text/css">
 		div{
 			vertical-align: top;
 		}
-		#nav_bar{
-			border: 1px solid black;
+		#nav_bar h1{
+			display: inline-block;
+		}
+		#nav_bar a{
+			position: relative;
+			left: 71%;
 		}
 		#sidebar{
 			display: inline-block;
@@ -18,22 +28,33 @@
 			border: 1px solid black;
 			width: 74%;
 		}
-		.product{
+		select{
 			display: inline-block;
-			border: 1px solid blue;
-			width: 20%;
 		}
+		#listing{
+			text-align: center; 
+		}
+		.similar_products{
+			display: inline-block;
+			border: 1px solid lightgrey;
+			width: 151px;		
+		}
+		.similar_products img{
+			width: 150px;
+		}
+
 	</style>
 </head>
-<body>
+<body class="container">
 	<div id="nav_bar">
-		<h1>Dojo eCommerce</h1>
-		<a href="">Shopping Cart()</a>
+		<h1>uTunes</h1>
+		<a href="#">Shopping Cart <span class="badge">0</span></a>
+		<hr>
 	</div>
 	<div id="sidebar">
-		<form>
+		<form class="form-group">
 			<input type="text" name="search" placeholder="product name">
-			<input type="submit" value="submit">
+			<input class="btn btn-default" type="submit" value="submit">
 		</form>
 		<p>Categories</p>
 		<ul>
@@ -45,86 +66,116 @@
 		</ul>
 	</div>
 	<div id="content">
-		<h1>Tshirts (page 2)</h1>
-		<ul class="pagination">
-			<li>first</li>
-			<li>prev</li>
-			<li>2</li>
-			<li>next</li>
+		<h1>Albums</h1>
+		<ul class="pager">
+			<li><a href="">first</a></li>
+			<li><a href="">prev</a></li>
+			<li><a href="">2</a></li>
+			<li><a href="">last</a></li>
 		</ul>
 		<form>
 			<label>Sorted by</label>
-			<select>
+			<select class="form-control">
 				<option>Price</option>
 				<option>Most Popular</option>
 			</select>
 		</form>
 		<div id="listing">
-			<div class="product">
-				<img src="">
+			<div class="similar_products">
+				<img src="/assets/images/grey.png">
 				<p>Title</p>
+				<p>$19.99</p>
 			</div>
-			<div class="product">
-				<img src="">
+			<div class="similar_products">
+				<img src="/assets/images/grey.png">
 				<p>Title</p>
+				<p>$19.99</p>
 			</div>
-			<div class="product">
-				<img src="">
+			<div class="similar_products">
+				<img src="/assets/images/grey.png">
 				<p>Title</p>
+				<p>$19.99</p>
 			</div>
-			<div class="product">
-				<img src="">
+			<div class="similar_products">
+				<img src="/assets/images/grey.png">
 				<p>Title</p>
+				<p>$19.99</p>
 			</div>
-			<div class="product">
-				<img src="">
+			<div class="similar_products">
+				<img src="/assets/images/grey.png">
 				<p>Title</p>
+				<p>$19.99</p>
 			</div>
-			<div class="product">
-				<img src="">
+			<div class="similar_products">
+				<img src="/assets/images/grey.png">
 				<p>Title</p>
+				<p>$19.99</p>
 			</div>
-			<div class="product">
-				<img src="">
+			<div class="similar_products">
+				<img src="/assets/images/grey.png">
 				<p>Title</p>
+				<p>$19.99</p>
 			</div>
-			<div class="product">
-				<img src="">
+			<div class="similar_products">
+				<img src="/assets/images/grey.png">
 				<p>Title</p>
+				<p>$19.99</p>
 			</div>
-			<div class="product">
-				<img src="">
+			<div class="similar_products">
+				<img src="/assets/images/grey.png">
 				<p>Title</p>
+				<p>$19.99</p>
 			</div>
-			<div class="product">
-				<img src="">
+			<div class="similar_products">
+				<img src="/assets/images/grey.png">
 				<p>Title</p>
+				<p>$19.99</p>
 			</div>
-			<div class="product">
-				<img src="">
+			<div class="similar_products">
+				<img src="/assets/images/grey.png">
 				<p>Title</p>
+				<p>$19.99</p>
 			</div>
-			<div class="product">
-				<img src="">
+			<div class="similar_products">
+				<img src="/assets/images/grey.png">
 				<p>Title</p>
+				<p>$19.99</p>
 			</div>
-			<div class="product">
-				<img src="">
+			<div class="similar_products">
+				<img src="/assets/images/grey.png">
 				<p>Title</p>
+				<p>$19.99</p>
 			</div>
-			<div class="product">
-				<img src="">
+			<div class="similar_products">
+				<img src="/assets/images/grey.png">
 				<p>Title</p>
+				<p>$19.99</p>
+			</div>
+			<div class="similar_products">
+				<img src="/assets/images/grey.png">
+				<p>Title</p>
+				<p>$19.99</p>
 			</div>
 		</div>
-		<ul class="pagination">
-			<li>1</li>
-			<li>2</li>
-			<li>3</li>
-			<li>4</li>
-			<li>5</li>
-			<li>&rarr;</li>
-		</ul>
+	  <ul class="pagination">
+	    <li>
+	      <a href="#" aria-label="Previous">
+	        <span aria-hidden="true">&laquo;</span>
+	      </a>
+	    </li>
+	    <li><a href="#">1</a></li>
+	    <li><a href="#">2</a></li>
+	    <li><a href="#">3</a></li>
+	    <li><a href="#">4</a></li>
+	    <li><a href="#">5</a></li>
+	    <li>
+	      <a href="#" aria-label="Next">
+	        <span aria-hidden="true">&raquo;</span>
+	      </a>
+	    </li>
+	  </ul>
 	</div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="/assets/js/bootstrap.min.js"></script>	
 </body>
 </html>
