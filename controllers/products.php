@@ -1,4 +1,6 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php
+// If you have not loaded the index, end the program!
+if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Products extends CI_Controller {
 
@@ -18,7 +20,7 @@ class Products extends CI_Controller {
 	{
 		$this->load->view('partials/header',array('title'=>'Home','h1'=>'Sign In'));
 		// Grabbing all the products and categories from the db and passing them to the show_all view
-		// $this->load->view('partials/footer') loads all the js after the doc has been loaded (good practice - faster?)
+		// $this->load->view('partials/footer') loads all the js after the doc has been loaded (good practice - faster)
 		$data['products'] = $this->Product->show_all();
 		$data['categories'] = $this->Product->show_categories();
 		$this->load->view('products/show_all',$data);
