@@ -1,6 +1,6 @@
 <?php if($this->session->userdata('admin')) 
 { ?>
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-danger">
 	<div class="container-fluid">
 	    <div class="navbar-header">
 	        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-nav">
