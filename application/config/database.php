@@ -7,15 +7,15 @@ if(ENVIRONMENT == 'production')
 {
 	$db['default']['hostname'] = 'localhost';
 	$db['default']['username'] = 'root';
-	$db['default']['password'] = '';
-	$db['default']['database'] = '';
+	$db['default']['password'] = 'root';
+	$db['default']['database'] = 'ecommerce';
 }
 else
 {
 	$db['default']['hostname'] = 'localhost';
 	$db['default']['username'] = 'root';
-	$db['default']['password'] = 'password';
-	$db['default']['database'] = 'book_review';
+	$db['default']['password'] = 'root';
+	$db['default']['database'] = 'ecommerce';
 }
 
 $db['default']['dbdriver'] = 'mysql';
