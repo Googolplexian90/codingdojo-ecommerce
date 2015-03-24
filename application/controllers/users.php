@@ -44,7 +44,7 @@ class Users extends CI_Controller {
 				{
 					$data['id']=$user['id'];
 					$data['alias']=$user['alias'];
-					$data['email']=$user['email']
+					$data['email']=$user['email'];
 					$this->session->set_userdata('admin',$data);
 					redirect('/dashboard/orders');
 				}
