@@ -37,13 +37,12 @@ class Products extends CI_Controller {
 	}
 	public function show($id)
 	{
-		$product = $this->Product->show($id);
-		$this->load->view('partials/header',array('title'=>'(Product Page) '.$product['name']));
-		$data['images'] = $this->Product->get_images($id);
-		$data['product'] = $product;
-		$data['related'] = $this->Product->find($product['name']);
-		// Need to set up many to many rel with products to fill in the above
-		$this->load->view('products/show',$data);
+		//$product = $this->Product->show($id);
+		$this->load->view('partials/header',array('title'=>'(Product Page)'));
+		// $data['images'] = $this->Product->get_images($id);
+		// $data['product'] = $product;
+		// $data['related'] = $this->Product->find($product['name']);
+		$this->load->view('products/show');
 		$this->load->view('partials/footer');
 	}
 	public function edit($id)
