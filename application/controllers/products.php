@@ -15,10 +15,10 @@ class Products extends CI_Controller {
 
 	public function index()
 	{
-		$this->load->view('partials/header',array('title'=>'Home','h1'=>'Sign In'));
-		$data['products'] = $this->Product->show_all();
-		$data['categories'] = $this->Product->show_categories();
-		$this->load->view('products/show_all',$data);
+		$this->load->view('partials/header',array('title'=>'All Products'));
+		// $data['products'] = $this->Product->show_all();
+		// $data['categories'] = $this->Product->show_categories();
+		$this->load->view('products/list');
 		$this->load->view('partials/footer');
 	}
 	public function search_all()
