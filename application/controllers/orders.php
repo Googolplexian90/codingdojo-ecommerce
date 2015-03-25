@@ -107,7 +107,7 @@ class Orders extends CI_Controller {
 		if(!$this->form_validation->run())
 		{
 			$this->session->set_flashdata('error',validation_errors());
-			redirect('/orders/cart')
+			redirect('/orders/cart');
 		}
 		else
 		{

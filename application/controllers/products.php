@@ -10,15 +10,15 @@ class Products extends CI_Controller {
 		{
 			$this->session->set_userdata('cart',array());
 		}
-		$this->output->enable_profiler();
+		
 	}
 
 	public function index()
 	{
-		$this->load->view('partials/header',array('title'=>'Home','h1'=>'Sign In'));
-		$data['products'] = $this->Product->show_all_albums();
-		$data['genres'] = $this->Product->show_genres();
-		$this->load->view('products/show_all', $data);
+		$this->load->view('partials/header',array('title'=>'All Products'));
+		// $data['products'] = $this->Product->show_all_albums();
+		// $data['categories'] = $this->Product->show_genres();
+		$this->load->view('products/list');
 		$this->load->view('partials/footer');
 	}
 

@@ -2,30 +2,37 @@
 
 class Product extends CI_Model {
 
-	function find() {
-		$query = $this->db->query('SELECT * FROM products');
-		return $query->result();
-
+	function show_all_albums() {
+		// $query = $this->db->query('SELECT * FROM products');
+		// return $query->result();
+		return $this->db->query('SELECT * FROM products')->result();
 	}
 
-	function show($id) {
+	function show_one_album($id) {
 		$query = $this->db->query('SELECT * FROM products WHERE id = ?', array($id));
 		return $query->row();
 	}
 
-	function create($data) {
-		$query = $this->db->query('INSERT INTO products SET name = description, price, created_at) VALUES(?,?,?, NOW())', array($data['name'], $data['description'], $data['price']));
-
+	function create($post) {
+		$query = $this->db->query('INSERT INTO products (name, description, price, created_at) VALUES(?,?,?, NOW())', array($post['name'], $post['description'], $post['price']));
 		return $query;
 	}
 
-	function update($data) {
-
-		$query = $this->db->query('UPDATE products SET name = ?, description =?, price=?, updated_at= NOW() WHERE id = ?', array($data['name'], $data['description'], $data['price'], $data['id']));
-
+	function add_image($post) {
+		$query = $this->db->query('INSERT INTO images(product_id, url, main, created_at) VALUES(?, ?, ?, NOW())', array($post['product_id'], $post['url'], $post['main']));
 		return $query;
-
 	}
+
+	function add_genre($post) {
+		$query = $this->db->query('INSERT INTO genres(product_id, name, created_at) VALUES(?, ?, NOW())', array($post['product_id'], $post['name']));
+		return $query;
+	}
+
+	function update($post) {
+		$query = $this->db->query('UPDATE products SET name = ?, description =?, price=?, updated_at= NOW() WHERE id = ?', array($post['name'], $post['description'], $post['price'], $post['id']));
+		return $query;
+	}
+
 	function destroy($id) {
 		$query = $this->db->query('DELETE FROM products WHERE id = ?', array($id));
 		return $query;

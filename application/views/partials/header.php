@@ -6,16 +6,14 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title><?= $title ?></title>
+        <title><?= $title ?> | uTunes</title>
         <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="/assets/styles.css">
+        <link rel="icon" type="images/ico" href="/assets/images/favicon.ico">
     </head>
     <body>
+        <?php $this->load->view('partials/navbar'); ?>
+        <div class="container-fluid">
         <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-        <?php if($this->session->userdata('user'))
-        {
-            $this->load->view('partials/nav');
-        } ?>
-        <?= (isset($h1)) ? "<h1>{$h1}</h1>" : "" ?>

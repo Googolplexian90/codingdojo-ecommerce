@@ -28,7 +28,7 @@ CREATE TABLE IF NOT EXISTS `ecommerce`.`users` (
   `email` VARCHAR(255) NOT NULL,
   `password` VARCHAR(255) NOT NULL,
   `created_at` TIMESTAMP NULL DEFAULT NULL,
-  `updated_at` TIMESTAMP NULL DEFAULT NOW() ON UPDATE NOW,
+  `updated_at` TIMESTAMP NULL DEFAULT NOW() ON UPDATE NOW(),
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -45,7 +45,7 @@ CREATE TABLE IF NOT EXISTS `ecommerce`.`products` (
   `price` FLOAT NOT NULL,
   `inventory` INT NULL DEFAULT NULL,
   `created_at` TIMESTAMP NULL DEFAULT NULL,
-  `updated_at` TIMESTAMP NULL DEFAULT NOW() ON UPDATE NOW,
+  `updated_at` TIMESTAMP NULL DEFAULT NOW() ON UPDATE NOW(),
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -60,7 +60,7 @@ CREATE TABLE IF NOT EXISTS `ecommerce`.`images` (
   `product_id` INT NOT NULL,
   `url` VARCHAR(255) NOT NULL,
   `created_at` TIMESTAMP NULL DEFAULT NULL,
-  `updated_at` TIMESTAMP NULL DEFAULT NOW() ON UPDATE NOW,
+  `updated_at` TIMESTAMP NULL DEFAULT NOW() ON UPDATE NOW(),
   `main` TINYINT(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`, `product_id`),
   INDEX `fk_images_products1_idx` (`product_id` ASC),
@@ -85,7 +85,7 @@ CREATE TABLE IF NOT EXISTS `ecommerce`.`addresses` (
   `state` TEXT NOT NULL,
   `zip` INT NOT NULL,
   `created_at` TIMESTAMP NULL DEFAULT NULL,
-  `updated_at` TIMESTAMP NULL DEFAULT now() on update now,
+  `updated_at` TIMESTAMP NULL DEFAULT now() on update NOW(),
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -101,7 +101,7 @@ CREATE TABLE IF NOT EXISTS `ecommerce`.`billlings` (
   `card` INT NOT NULL,
   `expires` VARCHAR(45) NOT NULL,
   `created_at` TIMESTAMP NULL DEFAULT NULL,
-  `updated_at` TIMESTAMP NULL DEFAULT now() on update now,
+  `updated_at` TIMESTAMP NULL DEFAULT now() on update NOW(),
   PRIMARY KEY (`id`, `address_id`),
   INDEX `fk_addresses_idx` (`address_id` ASC),
   CONSTRAINT `fk_addresses`
@@ -123,7 +123,7 @@ CREATE TABLE IF NOT EXISTS `ecommerce`.`orders` (
   `shipping_id` INT NOT NULL,
   `status` INT NOT NULL,
   `created_at` TIMESTAMP NULL DEFAULT NULL,
-  `updated_at` TIMESTAMP NULL DEFAULT now() on update now,
+  `updated_at` TIMESTAMP NULL DEFAULT now() on update NOW(),
   PRIMARY KEY (`id`),
   INDEX `fk_billing_idx` (`billIng_id` ASC),
   INDEX `fk_shipping_idx` (`shipping_id` ASC),
@@ -150,7 +150,7 @@ CREATE TABLE IF NOT EXISTS `ecommerce`.`categories` (
   `type` TEXT NOT NULL,
   `name` TEXT NOT NULL,
   `created_at` TIMESTAMP NULL DEFAULT NULL,
-  `updated_at` TIMESTAMP NULL DEFAULT now() on update now,
+  `updated_at` TIMESTAMP NULL DEFAULT now() on update NOW(),
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
