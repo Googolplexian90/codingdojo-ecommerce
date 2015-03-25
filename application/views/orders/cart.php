@@ -1,19 +1,14 @@
-<?php /* Uncomment this once table-data is ready
+<?php
 $data['thead']=array('Item','Price','Quantity','Total');
-$cart=$this->session->userdata('cart');
-foreach($cart as $key=>$item)
-{
-	$data['tbody']=array($item['name'],$price[$key],$item['qty'],($price[$key]*$item['qty']));
-	$total += $price[$key]*$item['qty'];
-}
-
+$data['tbody']=$tbody;
+?>
 <div class="row">
 	<div class="col-xs-12">
 		<?php $this->load->view('partials/table',$data); ?>
 		<p class="text-right">$<?= $total ?><br>
 		<a class"btn btn-success" href="/products">Continue Shopping</a></p>
 	</div>
-</div> */ ?>
+</div>
 <div class="row">
 	<div class="col-xs-12 col-sm-6">
 		<form class="form-horizontal" method="post" action="/orders/create">

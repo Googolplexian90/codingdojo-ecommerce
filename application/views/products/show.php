@@ -11,7 +11,7 @@
 	</div>
 	<div class="col-xs-12 col-sm-6 col-md-offset-1">
 		<?= $product->description ?>
-		<form class="form-inline text-right" action="/products/add_cart">
+		<form class="form-inline text-right" action="/products/add_cart" method="post">
 			<div class="form-group">
 				<select class="form-control" name="qty">
 					<option value="1">1 ($<?= $product->price * 1 ?>)</option>

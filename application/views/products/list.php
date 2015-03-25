@@ -47,7 +47,7 @@
 		{ ?>
 			<div class="col-xs-4">
 				<img src="/assets/images/<?= $product['image'] ?>">
-				<p><?= $product['name'] ?></p>
+				<p><a href="/products/show/<?= $product['id'] ?>"><?= $product['name'] ?></a></p>
 				<p>$<?= $product['price'] ?></p>
 			</div>
 		<?php } ?>

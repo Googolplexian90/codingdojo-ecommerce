@@ -18,7 +18,7 @@ class Products extends CI_Controller {
 		$products = $this->Product->show_all_albums();
 		foreach($products as $product)
 		{
-			$data['products'][] = array('name'=>$product->name,'price'=>$product->price,'image'=>$product->img);
+			$data['products'][] = array('id'=>$product->id,'name'=>$product->name,'price'=>$product->price,'image'=>$product->img);
 		}
 		if(count($products)>15)
 		{
