@@ -54,21 +54,21 @@ class Products extends CI_Controller {
 	public function show($id) {
 		$product = $this->Product->show_one_album($id);
 		$this->load->view('partials/header',array('title'=>$product->name.' '));
-		$img = $this->Product->show_images($id);
-		$data['images'] = array('temp');
-		foreach($img as $image)
-		{
-			if($image->main=='1')
-			{
-				$data['images'][0]=$image->url;
-			}
-			else
-			{
-				$data['images'][]=$image->url;
-			}
-		}
+		//$img = $this->Product->show_images($id);
+		// $data['images'] = array('temp');
+		// foreach($img as $image)
+		// {
+		// 	if($image->main=='1')
+		// 	{
+		// 		$data['images'][0]=$image->url;
+		// 	}
+		// 	else
+		// 	{
+		// 		$data['images'][]=$image->url;
+		// 	}
+		// }
 		$data['product'] = $product;
-		$data['related'] = $this->Product->show_related_album($product->id);
+		//$data['related'] = $this->Product->show_related_album($product->id);
 		$this->load->view('products/show', $data);
 		$this->load->view('partials/footer');
 	}
