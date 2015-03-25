@@ -1,12 +1,99 @@
+/* Created a bootstrap navbar class called navbar-danger */
+
+.navbar-danger {
+  background-color: #a94442;
+  border-color: #d9534f;
+}
+  .navbar-danger .navbar-brand {
+    color: #f8f8f8;
+  }
+    .navbar-danger .navbar-brand:hover,
+    .navbar-danger .navbar-brand:focus {
+      color: #efefef;
+      background-color: transparent;
+    }
+  .navbar-danger .navbar-text {
+    color: #f8f8f8;
+  }
+    .navbar-danger .navbar-nav > li > a {
+      color: #f8f8f8;
+    }
+
+      .navbar-danger .navbar-nav > li > a:hover,
+      .navbar-danger .navbar-nav > li > a:focus {
+        color: #f2dede;
+        background-color: #a94442;
+      }
+    .navbar-danger .navbar-nav > .active > a, 
+    .navbar-danger .navbar-nav > .active > a:hover,
+    .navbar-danger .navbar-nav > .active > a:focus {
+        font-weight: bold;
+        text-decoration: underline;
+        background-color: transparent;
+    }
+    .navbar-danger .navbar-nav > .disabled > a,
+    .navbar-danger .navbar-nav > .disabled > a:hover,
+    .navbar-danger .navbar-nav > .disabled > a:focus {
+        color: #888;
+        background-color: transparent;
+    }
+  .navbar-danger .navbar-toggle {
+    border-color: #f2dede;
+  }
+    .navbar-danger .navbar-toggle:hover,
+    .navbar-danger .navbar-toggle:focus {
+      background-color: transparent;
+    }
+    .navbar-danger .navbar-toggle .icon-bar {
+      background-color: #f8f8f8;
+    }
+  .navbar-danger .navbar-collapse,
+  .navbar-danger .navbar-form {
+    border-color: #a94442;
+  }
+  .navbar-danger .navbar-link {
+    color: #f8f8f8;
+  }
+    .navbar-danger .navbar-link:hover {
+      color: #f2dede;
+    }
+
+  .navbar-danger .btn-link {
+    color: #f8f8f8;
+  }
+    .navbar-danger .btn-link:hover,
+    .navbar-danger .btn-link:focus {
+      color: #f2dede;
+    }
+      .navbar-danger .btn-link[disabled]:hover,
+      .navbar-danger .btn-link[disabled]:focus,
+      fieldset[disabled] .navbar-danger .btn-link:hover,
+      fieldset[disabled] .navbar-danger .btn-link:focus {
+        color: #888;
+      }
+
 .similar-products
 {
 	width: 16.6667%;
 	float: left;
 	padding: 0 15px;
+	min-height: 1px;
+	display: inline-block;
 }
 img
 {
 	display: block;
 	height: auto;
 	max-width: 100%;
+}
+.thumb
+{
+	max-width: 150px;
+}
+
+@media screen and (min-width: 768px) {
+	#listing > div
+	{
+		width: 20%;
+	}
 }
