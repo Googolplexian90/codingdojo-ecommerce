@@ -8,16 +8,17 @@
 		</form>
 		<p><strong>Categories</strong></p>
 		<ul>
-			<li>Tshirts(25)</li>
-			<li>Shoes(25)</li>
-			<li>Cups(25)</li>
-			<li>Fruits(25)</li>
-			<li>Show All</li>
+		<?php foreach($genres as $li)
+		{ ?> 
+			<li><a href="/products/genre/<?= $li->id ?>"><?= $li->name ?>(<?= $li->total ?>)</a></li>
+		<?php } ?>
+			<li><a href="/products">Show All</a></li>
 		</ul>
 	</aside>
 	<div id="content" class="col-xs-12 col-sm-8 col-md-9">
 		<div class="row">
 			<div class="col-xs-12 col-sm-6"><h1>Albums</h1></div>
+			<?php if($pagination) { ?>
 			<div class="hidden-xs col-sm-6">
 				<ul class="pager">
 					<li><a href="">first</a></li>
@@ -26,6 +27,7 @@
 					<li><a href="">last</a></li>
 				</ul>
 			</div>
+			<?php } ?>
 			<div class="col-xs-12 col-sm-6 col-sm-offset-6">
 				<form class="form-horizontal">
 					<div class="form-group">
@@ -41,82 +43,16 @@
 			</div>
 		</div>
 		<div id="listing" class="row">
+		<?php foreach($products as $product)
+		{ ?>
 			<div class="col-xs-4">
-				<img src="/assets/images/grey.png">
-				<p>Title</p>
-				<p>$19.99</p>
+				<img src="/assets/images/<?= $product['image'] ?>">
+				<p><a href="/products/show/<?= $product['id'] ?>"><?= $product['name'] ?></a></p>
+				<p>$<?= $product['price'] ?></p>
 			</div>
-			<div class="col-xs-4">
-				<img src="/assets/images/grey.png">
-				<p>Title</p>
-				<p>$19.99</p>
-			</div>
-			<div class="col-xs-4">
-				<img src="/assets/images/grey.png">
-				<p>Title</p>
-				<p>$19.99</p>
-			</div>
-			<div class="col-xs-4">
-				<img src="/assets/images/grey.png">
-				<p>Title</p>
-				<p>$19.99</p>
-			</div>
-			<div class="col-xs-4">
-				<img src="/assets/images/grey.png">
-				<p>Title</p>
-				<p>$19.99</p>
-			</div>
-			<div class="col-xs-4">
-				<img src="/assets/images/grey.png">
-				<p>Title</p>
-				<p>$19.99</p>
-			</div>
-			<div class="col-xs-4">
-				<img src="/assets/images/grey.png">
-				<p>Title</p>
-				<p>$19.99</p>
-			</div>
-			<div class="col-xs-4">
-				<img src="/assets/images/grey.png">
-				<p>Title</p>
-				<p>$19.99</p>
-			</div>
-			<div class="col-xs-4">
-				<img src="/assets/images/grey.png">
-				<p>Title</p>
-				<p>$19.99</p>
-			</div>
-			<div class="col-xs-4">
-				<img src="/assets/images/grey.png">
-				<p>Title</p>
-				<p>$19.99</p>
-			</div>
-			<div class="col-xs-4">
-				<img src="/assets/images/grey.png">
-				<p>Title</p>
-				<p>$19.99</p>
-			</div>
-			<div class="col-xs-4">
-				<img src="/assets/images/grey.png">
-				<p>Title</p>
-				<p>$19.99</p>
-			</div>
-			<div class="col-xs-4">
-				<img src="/assets/images/grey.png">
-				<p>Title</p>
-				<p>$19.99</p>
-			</div>
-			<div class="col-xs-4">
-				<img src="/assets/images/grey.png">
-				<p>Title</p>
-				<p>$19.99</p>
-			</div>
-			<div class="col-xs-4">
-				<img src="/assets/images/grey.png">
-				<p>Title</p>
-				<p>$19.99</p>
-			</div>
+		<?php } ?>
 		</div>
+		<?php if($pagination) { ?>
 		<div class="row">
 			<div class="col-xs-12 text-center">
 			    <ul class="pagination">
@@ -138,5 +74,6 @@
 			    </ul>
 			</div>
 		</div>
+		<?php } ?>
 	</div>
 </div>

@@ -1,4 +1,4 @@
-<table class="table striped">
+<table class="table table-striped">
 	<thead>
 		<tr>
 		<?php foreach($thead as $data)

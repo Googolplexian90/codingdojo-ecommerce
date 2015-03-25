@@ -4,8 +4,19 @@ class Orders extends CI_Controller {
 	public function index(){}
 	public function cart()
 	{
+		$this->load->model('Product');
 		$this->load->view('partials/header',array('title'=>'Shopping Cart'));
-		$this->load->view('orders/cart');
+		$cart = $this->session->userdata('cart');
+		$data['total']=0;
+		$data['tbody']=array();
+		foreach($cart as $item=>$qty)
+		{
+			$product = $this->Product->show_one_album($item);
+			$data['tbody'][]=array($product->name,$product->price,$qty . '&emsp;<a href="/products/show/'.$item.'">Update</a> <a href="/products/remove_cart/'.$item.'"><span class="glyphicon glyphicon-trash"></span></a>',($qty * $product->price));
+			$data['total']+=$qty * $product->price;
+		}
+		$this->session->set_userdata('cart',$cart);
+		$this->load->view('orders/cart',$data);
 		$this->load->view('partials/footer');
 	}
 	public function create()
@@ -124,7 +135,7 @@ class Orders extends CI_Controller {
 			redirect(base_url());
 		}
 		$this->load->model('Order');
-		$data = $this->Order->show($id);
+		//$data = $this->Order->show($id);
 		$this->load->view('partials/header');
 		$this->load->view('orders/show');
 		$this->load->view('partials/footer');

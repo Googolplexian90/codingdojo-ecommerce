@@ -31,7 +31,7 @@
 			        <span class="icon-bar"></span>
 			        <span class="icon-bar"></span>
 		        </button>
-		        <a class="navbar-brand" href="#">uTune</a>
+		        <a class="navbar-brand" href="#">uTunes</a>
 		    </div><!-- /.navbar-header -->
 		    <div id="main-nav" class="collapse navbar-collapse">
 		    	<ul class="nav navbar-nav navbar-right">

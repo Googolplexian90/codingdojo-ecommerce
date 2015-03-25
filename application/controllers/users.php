@@ -1,10 +1,10 @@
 <?php if( !defined('BASEPATH') ) exit('No direct script access is allowed.');
 
 class Users extends CI_Controller {
-	public function __contruct()
+	public function __construct()
 	{
 		parent::__construct();
-		$this->load->model('User');
+		$this->load->model('Login');
 		$this->output->enable_profiler();
 	}
 	public function index()
@@ -36,7 +36,7 @@ class Users extends CI_Controller {
 		else
 		{
 			$form = $this->input->post(null,true);
-			$user = $this->User->find($form['email']);
+			$user = $this->Login->login_user($form['email']);
 			if($user)
 			{
 				$enc = $this->encrypt($form['password'],$user['password']);
