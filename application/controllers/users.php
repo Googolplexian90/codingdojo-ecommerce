@@ -4,7 +4,6 @@ class Users extends CI_Controller {
 	public function __contruct()
 	{
 		parent::__construct();
-		$this->load->model('User');
 		$this->output->enable_profiler();
 	}
 	public function index()
@@ -35,8 +34,9 @@ class Users extends CI_Controller {
 		}
 		else
 		{
+			$this->load->model('Login');
 			$form = $this->input->post(null,true);
-			$user = $this->User->find($form['email']);
+			$user = $this->Login->login_user($form['email']);
 			if($user)
 			{
 				$enc = $this->encrypt($form['password'],$user['password']);

@@ -1,6 +1,6 @@
 <?php
 
-class Orders extends CI_Model {
+class Order extends CI_Model {
 
 	function get_all() {
 		$query = $this->db->query('SELECT * FROM orders');
@@ -40,7 +40,7 @@ class Orders extends CI_Model {
 		$query = $this->db->query('INSERT INTO orders SET name = line_1, line_2, city, state, zip, created_on) VALUES(?,?,?,?,?, NOW())', array($data['name'], $data['description'], $data['price']));
 
 		return $query;
-
+	}
 }
 
-?>
+// end of Order model

@@ -135,7 +135,7 @@ class Orders extends CI_Controller {
 			redirect(base_url());
 		}
 		$this->load->model('Order');
-		$data = $this->Order->show($id);
+		//$data = $this->Order->show($id);
 		$this->load->view('partials/header');
 		$this->load->view('orders/show');
 		$this->load->view('partials/footer');
