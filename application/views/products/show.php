@@ -1,7 +1,7 @@
 <div class="row">
 	<div class="col-xs-12 col-sm-6 col-md-4">
 		<p><a href="/">Go Back</a></p>
-		<h1>Uprising Live!</h1>
+		<h1><?= $product->name ?></h1>
 		<h4>Bob Marley</h4>
 	</div>
 </div>
@@ -10,18 +10,19 @@
 		<img src="/assets/images/bmarle-uprisi_03.jpg">
 	</div>
 	<div class="col-xs-12 col-sm-6 col-md-offset-1">
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente, numquam accusantium, adipisci modi facilis, voluptates commodi unde eligendi, cumque illo sint maiores vel corrupti harum explicabo. Sint fugit molestiae accusantium!</p>
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente, numquam accusantium, adipisci modi facilis, voluptates commodi unde eligendi, cumque illo sint maiores vel corrupti harum explicabo. Sint fugit molestiae accusantium!</p>
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente, numquam accusantium, adipisci modi facilis, voluptates commodi unde eligendi, cumque illo sint maiores vel corrupti harum explicabo. Sint fugit molestiae accusantium!</p>
-		<form class="form-inline text-right">
+		<?= $product->description ?>
+		<form class="form-inline text-right" action="/products/add_cart">
 			<div class="form-group">
-				<select class="form-control" >
-					<option>Original $19.99</option>
-					<option>Clean Version $19.99</option>
-					<option>Live Version $26.99</option>
+				<select class="form-control" name="qty">
+					<option value="1">1 ($<?= $product->price * 1 ?>)</option>
+					<option value="2">2 ($<?= $product->price * 2 ?>)</option>
+					<option value="3">3 ($<?= $product->price * 3 ?>)</option>
+					<option value="4">4 ($<?= $product->price * 4 ?>)</option>
+					<option value="5">5 ($<?= $product->price * 5 ?>)</option>
 				</select>
 			</div>
-			<input class="btn btn-primary" type="submit" value="Buy">
+			<input type="hidden" name="product" value="<?= $product->id ?>">
+			<button class="btn btn-primary" type="submit">Buy</button>
 		</form>
 	</div>
 </div>

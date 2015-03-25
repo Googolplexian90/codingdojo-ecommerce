@@ -13,12 +13,24 @@ class Products extends CI_Controller {
 		
 	}
 
-	public function index()
+	public function index($page=0)
 	{
 		$this->load->view('partials/header',array('title'=>'All Products'));
-		// $data['products'] = $this->Product->show_all_albums();
+		$products = $this->Product->show_all_albums();
+		foreach($products as $product)
+		{
+			$data['products'][] = array('name'=>$product->name,'price'=>$product->price);
+		}
+		if(count($products)>15)
+		{
+			// We need pagination!
+		}
+		else
+		{
+			$data['pagination']= false;
+		}
 		// $data['categories'] = $this->Product->show_genres();
-		$this->load->view('products/list');
+		$this->load->view('products/list',$data);
 		$this->load->view('partials/footer');
 	}
 
@@ -41,12 +53,11 @@ class Products extends CI_Controller {
 	public function show($id)
 	{
 		$product = $this->Product->show_one_album($id);
-		$this->load->view('partials/header',array('title'=>'(Product Page) '.$product['name']));
-		$data['images'] = $this->Product->get_images($id);
+		$this->load->view('partials/header',array('title'=>$product->name.' '));
+		//$data['images'] = $this->Product->get_images($id);
 		$data['product'] = $product;
-		$data['related'] = $this->Product->find($product['name']);
-		// Need to set up many to many rel with products to fill in the above
-		$this->load->view('products/show', $data);
+		//$data['related'] = $this->Product->find($product['name']);
+		$this->load->view('products/show',$data);
 		$this->load->view('partials/footer');
 	}
 
@@ -68,6 +79,14 @@ class Products extends CI_Controller {
 			redirect('/products');
 		}
 		$this->load->view('products/new');
+	}
+	public function add_cart()
+	{
+		$cart = $this->session->userdata('cart');
+		$cart[$this->input->post('product',true)]=$this->input->post('qty',true);
+		$this->session->set_userdata('cart',$cart);
+		$redirect = '/products/show/'.$this->input->post('product');
+		redirect($redirect);
 	}
 	public function delete($id)
 	{
