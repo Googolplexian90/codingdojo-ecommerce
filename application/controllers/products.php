@@ -111,6 +111,13 @@ class Products extends CI_Controller {
 		$this->Product->destroy($id);
 		redirect('/dashboard/products');
 	}
+	public function remove_cart($id)
+	{
+		$cart = $this->session->userdata('cart');
+		unset($cart[$id]);
+		$this->session->set_userdata('cart',$cart);
+		redirect('/orders/cart');
+	}
 }
 
 //end of products controller

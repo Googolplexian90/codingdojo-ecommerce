@@ -8,15 +8,11 @@ class Orders extends CI_Controller {
 		$this->load->view('partials/header',array('title'=>'Shopping Cart'));
 		$cart = $this->session->userdata('cart');
 		$data['total']=0;
+		$data['tbody']=array();
 		foreach($cart as $item=>$qty)
 		{
 			$product = $this->Product->show_one_album($item);
-			if(empty($product))
-			{
-				unset($cart[$item]);
-				continue;
-			}
-			$data['tbody'][]=array($product->name,$product->price,$qty,($qty * $product->price));
+			$data['tbody'][]=array($product->name,$product->price,$qty . '&emsp;<a href="/products/show/'.$item.'">Update</a> <a href="/products/remove_cart/'.$item.'"><span class="glyphicon glyphicon-trash"></span></a>',($qty * $product->price));
 			$data['total']+=$qty * $product->price;
 		}
 		$this->session->set_userdata('cart',$cart);
