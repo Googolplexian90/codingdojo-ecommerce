@@ -18,11 +18,11 @@ class Products extends CI_Controller {
 		$products = $this->Product->show_all_albums();
 		foreach($products as $product)
 		{
-			$data['products'][] = array('id'=>$product->id,'name'=>$product->name,'price'=>$product->price,'image'=>$product->img);
+			$data['products'][] = array('id'=>$product->id,'name'=>$product->name,'price'=>$product->price,'image'=>'grey.png');
 		}
 		if(count($products)>15)
 		{
-			// We need pagination!
+			$data['pagination']=true;
 		}
 		else
 		{

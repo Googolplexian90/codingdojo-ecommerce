@@ -3,10 +3,7 @@
 class Product extends CI_Model {
 
 	function show_all_albums() {
-		$query = 'SELECT products.*,images.url AS img FROM products
-				  LEFT JOIN images ON images.product_id=products.id
-				  WHERE images.main=1';
-		return $this->db->query($query)->result();
+		return $this->db->query('SELECT * FROM products')->result();
 	}
 
 	function show_one_album($id) {

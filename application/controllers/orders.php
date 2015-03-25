@@ -126,7 +126,8 @@ class Orders extends CI_Controller {
 			$form = $this->input->post(null,true);
 			$this->load->model('Order');
 			$this->Order->create_order($form);
-			//redirect('/products');
+			$this->session->unset_userdata('cart');
+			redirect('/products');
 		}
 	}
 	function show($id)
