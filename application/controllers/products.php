@@ -12,21 +12,37 @@ class Products extends CI_Controller {
 
 	}
 
-	public function index($page=0)
+	public function index($page=1)
 	{
 		$this->load->view('partials/header',array('title'=>'All Products'));
 		$products = $this->Product->show_all_albums();
-		foreach($products as $product)
-		{
-			$data['products'][] = array('id'=>$product->id,'name'=>$product->name,'price'=>$product->price,'image'=>'grey.png');
-		}
 		if(count($products)>15)
 		{
 			$data['pagination']=true;
+			$offset = ($page-1) * 15;
+			for($i=0;$i<count($products);)
+			{
+				if($offset===0&&$i<15)
+				{
+					$i++;
+				}
+				elseif($offset>0)
+				{
+					array_shift($products);
+				}
+				else
+				{
+					array_pop($products);
+				}
+			}
 		}
 		else
 		{
 			$data['pagination']= false;
+		}
+		foreach($products as $product)
+		{
+			$data['products'][] = array('id'=>$product->id,'name'=>$product->name,'price'=>$product->price,'image'=>$product->image_link);
 		}
 		$data['genres'] = $this->Product->show_genres();
 		$this->load->view('products/list',$data);
@@ -54,21 +70,8 @@ class Products extends CI_Controller {
 	public function show($id) {
 		$product = $this->Product->show_one_album($id);
 		$this->load->view('partials/header',array('title'=>$product->name.' '));
-		//$img = $this->Product->show_images($id);
-		// $data['images'] = array('temp');
-		// foreach($img as $image)
-		// {
-		// 	if($image->main=='1')
-		// 	{
-		// 		$data['images'][0]=$image->url;
-		// 	}
-		// 	else
-		// 	{
-		// 		$data['images'][]=$image->url;
-		// 	}
-		// }
 		$data['product'] = $product;
-		//$data['related'] = $this->Product->show_related_album($product->id);
+		$data['related'] = $this->Product->show_related_album($product->id);
 		$this->load->view('products/show', $data);
 		$this->load->view('partials/footer');
 	}
