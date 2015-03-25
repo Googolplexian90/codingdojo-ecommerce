@@ -11,9 +11,15 @@ class Dashboard extends CI_Controller {
 	function orders()
 	{
 		$this->load->model('Order');
-		//$data = $this->Order->show_all();
+		$orders = $this->Order->get_all();
+		$data['table']['thead']=array('Order ID','Name','Date','Billing Address','Total','Status');
+		$data['table']['tbody']=array();
+		foreach($orders as $order)
+		{
+			$data['table']['tbody'][] = array($order->id,$order->first_name . ' ' . $order->last_name,$order->created_at,$order->address1.' '.$order->city.' '.$order->state.' '.$order->zip,'$0','Order in Progress');
+		}
 		$this->load->view('partials/header');
-		$this->load->view('dashboard');
+		$this->load->view('dashboard',$data);
 		$this->load->view('partials/footer');
 	}
 	function products()

@@ -3,9 +3,10 @@
 class Order extends CI_Model {
 
 	function get_all() {
-		$query = $this->db->query('SELECT * FROM orders');
-		return $query->result();
-		// return $this->db->query('SELECT * FROM orders')->result_array();
+		$query = 'SELECT * FROM orders
+				  LEFT JOIN billings ON billings.id=orders.billing_id
+				  LEFT JOIN addresses ON addresses.id=billing.address_id';
+		return $this->db->query($query)->result();
 	}
 
 	function get_order($id) {
