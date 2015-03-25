@@ -13,29 +13,38 @@ class Product extends CI_Model {
 		return $query->row();
 	}
 
-	function create($post) {
-		$query = $this->db->query('INSERT INTO products (name, description, price, created_at) VALUES(?,?,?, NOW())', array($post['name'], $post['description'], $post['price']));
-		return $query;
+	function create_album($post) {
+		$this->db->query('INSERT INTO products (name, description, price, inventory, created_at) VALUES(?,?,?,?, NOW())', array($post['name'], $post['description'], $post['price'], $post['inventory']));
 	}
 
 	function add_image($post) {
-		$query = $this->db->query('INSERT INTO images(product_id, url, main, created_at) VALUES(?, ?, ?, NOW())', array($post['product_id'], $post['url'], $post['main']));
-		return $query;
+		$this->db->query('INSERT INTO images(product_id, url, main, created_at) VALUES(?, ?, ?, NOW())', array($post['product_id'], $post['url'], $post['main']));
 	}
 
 	function add_genre($post) {
-		$query = $this->db->query('INSERT INTO genres(product_id, name, created_at) VALUES(?, ?, NOW())', array($post['product_id'], $post['name']));
-		return $query;
+		$this->db->query('INSERT INTO genres(name, created_at) VALUES(?, NOW())', array($post['name']));
 	}
 
 	function update($post) {
-		$query = $this->db->query('UPDATE products SET name = ?, description =?, price=?, updated_at= NOW() WHERE id = ?', array($post['name'], $post['description'], $post['price'], $post['id']));
-		return $query;
+		$query = $this->db->query('UPDATE products SET name = ?, description =?, price=? WHERE id = ?', array($post['name'], $post['description'], $post['price'], $post['id']));
+		return $query->row();
 	}
 
 	function destroy($id) {
-		$query = $this->db->query('DELETE FROM products WHERE id = ?', array($id));
-		return $query;
+		$this->db->query('DELETE FROM products WHERE id = ?', array($id));
+	}
+	function show_genres() {
+		$query = "SELECT genres.name,count(*) as total from genres
+		          left join products_genres on genres.id=products_genres.genre_id
+		          group by genres.id";
+		return $this->db->query($query)->result();
+	}
+	function show_images($id) {
+
+		return $this->db->query('SELECT * FROM images where id=?', array($id))->result();
+	}
+	function show_main_images() {
+		return $this->db->query('select * from images where main=1')->result();
 	}
 
 }
