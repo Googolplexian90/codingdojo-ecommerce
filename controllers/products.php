@@ -28,7 +28,7 @@ class Products extends CI_Controller {
 	}
 	public function search_all()
 	{
-		// storing... post data
+		// Storing the posted user input post data
 		// Searching for stuff from db
 		$form = $this->input->post(null,true); // null, true?
 		$data = $this->Product->find($form);
