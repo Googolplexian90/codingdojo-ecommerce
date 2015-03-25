@@ -7,7 +7,7 @@
 </div>
 <div class="row">
 	<div class="col-xs-12 col-sm-6 col-md-3 col-lg-4">
-		<img src="/assets/images/<?= $images[0] ?>">
+		<img src="/assets/images/grey.png">
 	</div>
 	<div class="col-xs-12 col-sm-6 col-md-offset-1">
 		<?= $product->description ?>
@@ -30,14 +30,14 @@
 	<div class="col-xs-12">
 		<h3>Similar Items</h3>
 		<div class="row">
-		<?php foreach($related as $product)
+		<?php /*foreach($related as $product)
 		{ ?>
 			<div class="similar-products">
 				<img src="/assets/images/<?= $product->url ?>">
 				<p><?= $product->name ?></p>
 				<p>$<?= $product->price ?></p>
 			</div>
-		<?php } ?>
+		<?php } */?>
 		</div>
 	</div>
 </div>
