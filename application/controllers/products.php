@@ -18,7 +18,7 @@ class Products extends CI_Controller {
 		$products = $this->Product->show_all_albums();
 		foreach($products as $product)
 		{
-			$data['products'][] = array('name'=>$product->name,'price'=>$product->price);
+			$data['products'][] = array('name'=>$product->name,'price'=>$product->price,'image'=>$product->img);
 		}
 		if(count($products)>15)
 		{
@@ -28,7 +28,7 @@ class Products extends CI_Controller {
 		{
 			$data['pagination']= false;
 		}
-		// $data['categories'] = $this->Product->show_genres();
+		$data['genres'] = $this->Product->show_genres();
 		$this->load->view('products/list',$data);
 		$this->load->view('partials/footer');
 	}
@@ -40,19 +40,35 @@ class Products extends CI_Controller {
 	}
 
 	public function genre($id, $page = 0) {
-		$this->load->view('partials/header', array('title' => '(Products Page) Tshirts', 'h1' => 'Tshirts'));
-		$search = $this->Product->get_genre($id);
-		$data   = $this->Product->find($search);
-		$this->load->view('products/show_all', $data);
+		$this->load->view('partials/header', array('title' => 'All Products | (Genre) '));
+		$search = $this->Product->search_albums(array('products_genres.genre_id'=>$id));
+		foreach($search as $product)
+		{
+			$data['products'][] = array('name'=>$product->name,'price'=>$product->price,'image'=>$product->img);
+		}
+		//$data   = $this->Product->find($search);
+		$this->load->view('products/list', $data);
 		$this->load->view('partials/footer');
 	}
 
 	public function show($id) {
 		$product = $this->Product->show_one_album($id);
 		$this->load->view('partials/header',array('title'=>$product->name.' '));
-		//$data['images'] = $this->Product->get_images($id);
+		$img = $this->Product->show_images($id);
+		$data['images'] = array('temp');
+		foreach($img as $image)
+		{
+			if($image->main=='1')
+			{
+				$data['images'][0]=$image->url;
+			}
+			else
+			{
+				$data['images'][]=$image->url;
+			}
+		}
 		$data['product'] = $product;
-		//$data['related'] = $this->Product->find($product['name']);
+		$data['related'] = $this->Product->show_related_album($product->id);
 		$this->load->view('products/show', $data);
 		$this->load->view('partials/footer');
 	}

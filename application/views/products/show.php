@@ -2,12 +2,12 @@
 	<div class="col-xs-12 col-sm-6 col-md-4">
 		<p><a href="/">Go Back</a></p>
 		<h1><?= $product->name ?></h1>
-		<h4>Bob Marley</h4>
+		<h4><?= $product->artist ?></h4>
 	</div>
 </div>
 <div class="row">
 	<div class="col-xs-12 col-sm-6 col-md-3 col-lg-4">
-		<img src="/assets/images/bmarle-uprisi_03.jpg">
+		<img src="/assets/images/<?= $images[0] ?>">
 	</div>
 	<div class="col-xs-12 col-sm-6 col-md-offset-1">
 		<?= $product->description ?>
@@ -30,36 +30,14 @@
 	<div class="col-xs-12">
 		<h3>Similar Items</h3>
 		<div class="row">
+		<?php foreach($related as $product)
+		{ ?>
 			<div class="similar-products">
-				<img src="/assets/images/grey.png">
-				<p>Title</p>
-				<p>$19.99</p>
+				<img src="/assets/images/<?= $product->url ?>">
+				<p><?= $product->name ?></p>
+				<p>$<?= $product->price ?></p>
 			</div>
-			<div class="similar-products">
-				<img src="/assets/images/grey.png">
-				<p>Title</p>
-				<p>$19.99</p>
-			</div>
-			<div class="similar-products">
-				<img src="/assets/images/grey.png">
-				<p>Title</p>
-				<p>$19.99</p>
-			</div>
-			<div class="similar-products">
-				<img src="/assets/images/grey.png">
-				<p>Title</p>
-				<p>$19.99</p>
-			</div>
-			<div class="similar-products">
-				<img src="/assets/images/grey.png">
-				<p>Title</p>
-				<p>$19.99</p>
-			</div>
-			<div class="similar-products col-xs-6 col-sm-2">
-				<img src="/assets/images/grey.png">
-				<p>Title</p>
-				<p>$19.99</p>
-			</div>
+		<?php } ?>
 		</div>
 	</div>
 </div>

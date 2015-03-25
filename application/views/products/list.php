@@ -8,11 +8,11 @@
 		</form>
 		<p><strong>Categories</strong></p>
 		<ul>
-			<li>Tshirts(25)</li>
-			<li>Shoes(25)</li>
-			<li>Cups(25)</li>
-			<li>Fruits(25)</li>
-			<li>Show All</li>
+		<?php foreach($genres as $li)
+		{ ?> 
+			<li><a href="/products/genre/<?= $li->id ?>"><?= $li->name ?>(<?= $li->total ?>)</a></li>
+		<?php } ?>
+			<li><a href="/products">Show All</a></li>
 		</ul>
 	</aside>
 	<div id="content" class="col-xs-12 col-sm-8 col-md-9">
@@ -46,7 +46,7 @@
 		<?php foreach($products as $product)
 		{ ?>
 			<div class="col-xs-4">
-				<img src="/assets/images/grey.png">
+				<img src="/assets/images/<?= $product['image'] ?>">
 				<p><?= $product['name'] ?></p>
 				<p>$<?= $product['price'] ?></p>
 			</div>
