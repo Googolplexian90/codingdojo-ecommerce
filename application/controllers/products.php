@@ -16,7 +16,7 @@ class Products extends CI_Controller {
 	{
 		$this->load->view('partials/header',array('title'=>'All Products'));
 		$products = $this->Product->show_all_albums();
-		if(count($products)>15)
+		if(count($products)>15&&$page!=0)
 		{
 			$data['pagination']=true;
 			$data['pager']=array();
