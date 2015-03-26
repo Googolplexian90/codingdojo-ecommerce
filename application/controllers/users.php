@@ -57,7 +57,7 @@ class Users extends CI_Controller {
 	{
 		$u = $this->session->all_userdata();
 		$this->session->unset_userdata($u);
-		redirect(baseurl());
+		redirect('/');
 	}
 
 	protected function encrypt($password,$salt=false)

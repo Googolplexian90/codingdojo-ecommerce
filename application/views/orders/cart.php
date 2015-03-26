@@ -23,43 +23,43 @@ $data['tbody']=$tbody;
 			<div class="form-group">
 				<label class="col-sm-4 col-md-3">First Name:</label>
 				<div class="col-xs-12 col-sm-8 col-md-9">
-					<input class="form-control" type="text" name="shipping['first_name']">
+					<input class="form-control" type="text" name="shipping[first_name]">
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="col-sm-4 col-md-3">Last Name:</label>
 				<div class="col-xs-12 col-sm-8 col-md-9">
-					<input class="form-control" type="text" name="shipping['last_name']">
+					<input class="form-control" type="text" name="shipping[last_name]">
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="col-sm-4 col-md-3">Address:</label>
 				<div class="col-xs-12 col-sm-8 col-md-9">
-					<input class="form-control" type="text" name="shipping['address1']">
+					<input class="form-control" type="text" name="shipping[address1]">
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="col-sm-4 col-md-3">Address Line 2:</label>
 				<div class="col-xs-12 col-sm-8 col-md-9">
-					<input class="form-control" type="text" name="shipping['address2']">
+					<input class="form-control" type="text" name="shipping[address2]">
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="col-sm-4 col-md-3">City:</label>
 				<div class="col-xs-12 col-sm-8 col-md-9">
-					<input class="form-control" type="text" name="shipping['city']">
+					<input class="form-control" type="text" name="shipping[city]">
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="col-sm-4 col-md-3">State:</label>
 				<div class="col-xs-12 col-sm-8 col-md-9">
-					<input class="form-control" type="text" name="shipping['state']">
+					<input class="form-control" type="text" name="shipping[state]">
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="col-sm-4 col-md-3">Zipcode:</label>
 				<div class="col-xs-12 col-sm-8 col-md-9">
-					<input class="form-control" type="text" name="shipping['zip']">
+					<input class="form-control" type="text" name="shipping[zip]">
 				</div>
 			</div>
 			<h2>Billing Information</h2>
@@ -75,43 +75,43 @@ $data['tbody']=$tbody;
 			<div class="form-group">
 				<label class="col-sm-4 col-md-3">First Name:</label>
 				<div class="col-xs-12 col-sm-8 col-md-9">
-					<input class="form-control" type="text" name="billings['first_name']">
+					<input class="form-control" type="text" name="billings[first_name]">
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="col-sm-4 col-md-3">Last Name:</label>
 				<div class="col-xs-12 col-sm-8 col-md-9">
-					<input class="form-control" type="text" name="billings['last_name']">
+					<input class="form-control" type="text" name="billings[last_name]">
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="col-sm-4 col-md-3">Address:</label>
 				<div class="col-xs-12 col-sm-8 col-md-9">
-					<input class="form-control" type="text" name="billings['address1']">
+					<input class="form-control" type="text" name="billings[address1]">
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="col-sm-4 col-md-3">Address Line 2:</label>
 				<div class="col-xs-12 col-sm-8 col-md-9">
-					<input class="form-control" type="text" name="billings['address2']">
+					<input class="form-control" type="text" name="billings[address2]">
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="col-sm-4 col-md-3">City:</label>
 				<div class="col-xs-12 col-sm-8 col-md-9">
-					<input class="form-control" type="text" name="billings['city']">
+					<input class="form-control" type="text" name="billings[city]">
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="col-sm-4 col-md-3">State:</label>
 				<div class="col-xs-12 col-sm-8 col-md-9">
-					<input class="form-control" type="text" name="billings['state']">
+					<input class="form-control" type="text" name="billings[state]">
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="col-sm-4 col-md-3">Zipcode:</label>
 				<div class="col-xs-12 col-sm-8 col-md-9">
-					<input class="form-control" type="text" name="billings['zip']">
+					<input class="form-control" type="text" name="billings[zip]">
 				</div>
 			</div>
 			<br>

@@ -12,7 +12,7 @@ if (ENVIRONMENT == 'production') {
 } else {
 	$db['default']['hostname'] = 'localhost';
 	$db['default']['username'] = 'root';
-	$db['default']['password'] = 'root';
+	$db['default']['password'] = 'password';
 	$db['default']['database'] = 'ecommerce';
 }
 
