@@ -16,9 +16,10 @@ class Dashboard extends CI_Controller {
 		$data['table']['tbody']=array();
 		foreach($orders as $order)
 		{
-			$data['table']['tbody'][] = array($order->id,$order->first_name . ' ' . $order->last_name,$order->created_at,$order->address1.' '.$order->city.' '.$order->state.' '.$order->zip,'$0','Order in Progress');
+			$data['table']['tbody'][] = array($order->id,$order->first_name . ' ' . $order->last_name,date('Y-m-j',strtotime($order->created_at)),$order->line_1.' '.$order->city.' '.$order->state.' '.$order->zip,'$0','Order in Progress');
 		}
-		$this->load->view('partials/header');
+		$data['pagination']=false;
+		$this->load->view('partials/header',array('title'=>'Admin Dashboard | Orders'));
 		$this->load->view('dashboard',$data);
 		$this->load->view('partials/footer');
 	}
@@ -26,7 +27,7 @@ class Dashboard extends CI_Controller {
 	{
 		$this->load->model('Product');
 		//$data = $this->Product->show_all();
-		$this->load->view('partials/header');
+		$this->load->view('partials/header',array('title'=>'Admin Dashboard | Products'));
 		$this->load->view('dashboard');
 		$this->load->view('partials/footer');
 	}

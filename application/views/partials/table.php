@@ -3,7 +3,7 @@
 		<tr>
 		<?php foreach($thead as $data)
 		{
-			echo "<td>{$data}</td>";
+			echo "<th>{$data}</th>";
 		} ?>
 		</tr>
 	</thead>

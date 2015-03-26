@@ -1,4 +1,5 @@
 DROP SCHEMA IF EXISTS `ecommerce`;
+
 CREATE DATABASE  IF NOT EXISTS `ecommerce` /*!40100 DEFAULT CHARACTER SET utf8 */;
 USE `ecommerce`;
 -- MySQL dump 10.13  Distrib 5.6.17, for Win64 (x86_64)
@@ -27,6 +28,8 @@ DROP TABLE IF EXISTS `addresses`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `addresses` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `first_name` text NOT NULL,
+  `last_name` text NOT NULL,
   `line_1` text NOT NULL,
   `line_2` text NOT NULL,
   `city` text NOT NULL,
@@ -35,74 +38,8 @@ CREATE TABLE `addresses` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `addresses`
---
-
-LOCK TABLES `addresses` WRITE;
-/*!40000 ALTER TABLE `addresses` DISABLE KEYS */;
-/*!40000 ALTER TABLE `addresses` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `billings`
---
-
-DROP TABLE IF EXISTS `billings`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `billings` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `address_id` int(11) NOT NULL,
-  `card` int(11) NOT NULL,
-  `expires` varchar(45) NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`,`address_id`),
-  KEY `fk_addresses_idx` (`address_id`),
-  CONSTRAINT `fk_addresses` FOREIGN KEY (`address_id`) REFERENCES `addresses` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `billings`
---
-
-LOCK TABLES `billings` WRITE;
-/*!40000 ALTER TABLE `billings` DISABLE KEYS */;
-/*!40000 ALTER TABLE `billings` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `following`
---
-
-DROP TABLE IF EXISTS `following`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `following` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `user_id` int(11) NOT NULL,
-  `follower_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_following_users3_idx` (`user_id`),
-  KEY `fk_following_users4_idx` (`follower_id`),
-  CONSTRAINT `fk_following_users3` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_following_users4` FOREIGN KEY (`follower_id`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `following`
---
-
-LOCK TABLES `following` WRITE;
-/*!40000 ALTER TABLE `following` DISABLE KEYS */;
-/*!40000 ALTER TABLE `following` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `genres`
@@ -147,19 +84,10 @@ CREATE TABLE `orders` (
   PRIMARY KEY (`id`),
   KEY `fk_billing_idx` (`billing_id`),
   KEY `fk_shipping_idx` (`shipping_id`),
-  CONSTRAINT `fk_billings` FOREIGN KEY (`billing_id`) REFERENCES `billings` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_billings` FOREIGN KEY (`billing_id`) REFERENCES `addresses` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_shipping` FOREIGN KEY (`shipping_id`) REFERENCES `addresses` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `orders`
---
-
-LOCK TABLES `orders` WRITE;
-/*!40000 ALTER TABLE `orders` DISABLE KEYS */;
-/*!40000 ALTER TABLE `orders` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `products`
@@ -228,6 +156,7 @@ DROP TABLE IF EXISTS `products_orders`;
 CREATE TABLE `products_orders` (
   `product_id` int(11) NOT NULL,
   `order_id` int(11) NOT NULL,
+  `qty` int(11) NOT NULL,
   PRIMARY KEY (`product_id`,`order_id`),
   KEY `fk_products_has_orders_orders1_idx` (`order_id`),
   KEY `fk_products_has_orders_products1_idx` (`product_id`),
@@ -235,15 +164,6 @@ CREATE TABLE `products_orders` (
   CONSTRAINT `fk_products_has_orders_products1` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `products_orders`
---
-
-LOCK TABLES `products_orders` WRITE;
-/*!40000 ALTER TABLE `products_orders` DISABLE KEYS */;
-/*!40000 ALTER TABLE `products_orders` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `similar_products`
@@ -310,4 +230,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-03-26 10:05:35
+-- Dump completed on 2015-03-26 10:44:22
