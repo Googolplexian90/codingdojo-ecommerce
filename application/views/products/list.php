@@ -8,11 +8,11 @@
 		</form>
 		<p><strong>Categories</strong></p>
 		<ul>
-		<?php foreach($genres as $key=>$li)
+		<?php foreach($genres as $li)
 		{ ?> 
-			<li <?= $key<4 ? '' : 'style="display:none"' ?>><a href="/products/genre/<?= $li->id ?>"><?= $li->name ?>(<?= $li->total ?>)</a></li>
+			<li><a href="/products/genre/<?= $li->id ?>"><?= $li->name ?>(<?= $li->total ?>)</a></li>
 		<?php } ?>
-			<li><a href="/products">Show All</a></li>
+			<li><a href="/products/0">Show All</a></li>
 		</ul>
 	</aside>
 	<div id="content" class="col-xs-12 col-sm-8 col-md-9">
