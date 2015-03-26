@@ -18,79 +18,80 @@ class Orders extends CI_Controller {
 		$this->session->set_userdata('cart',$cart);
 		$this->load->view('orders/cart',$data);
 		$this->load->view('partials/footer');
+		$this->output->enable_profiler();
 	}
 	public function create()
 	{
 		$config = array(
 			array(
-				'field'=>'shipping[\'first_name\']',
+				'field'=>'shipping[first_name]',
 				'label'=>'First Name',
 				'rules'=>'trim|required|alpha'
 			),
 			array(
-				'field'=>'shipping[\'last_name\']',
+				'field'=>'shipping[last_name]',
 				'label'=>'Last Name',
 				'rules'=>'trim|required|alpha'
 			),
 			array(
-				'field'=>'shipping[\'address1\']',
+				'field'=>'shipping[address1]',
 				'label'=>'Address',
 				'rules'=>'trim|required'
 			),
 			array(
-				'field'=>'shipping[\'address2\']',
+				'field'=>'shipping[address2]',
 				'label'=>'Address Line 2',
-				'rules'=>'trim|required'
+				'rules'=>'trim'
 			),
 			array(
-				'field'=>'shipping[\'city\']',
+				'field'=>'shipping[city]',
 				'label'=>'City',
 				'rules'=>'trim|required'
 			),
 			array(
-				'field'=>'shipping[\'state\']',
+				'field'=>'shipping[state]',
 				'label'=>'State',
-				'rules'=>'trim|required|alpha'
+				'rules'=>'trim|required|alpha|exact_length[2]'
 			),
 			array(
-				'field'=>'shipping[\'zip\']',
+				'field'=>'shipping[zip]',
 				'label'=>'Zipcode',
 				'rules'=>'trim|required|number'
 			),
 
 			array(
-				'field'=>'billing[\'first_name\']',
-				'label'=>'First Name',
+				'field'=>'billings[first_name]',
+				'label'=>'Billing First Name',
 				'rules'=>'trim|required|alpha'
 			),
 			array(
-				'field'=>'billing[\'last_name\']',
-				'label'=>'First Name',
+				'field'=>'billings[last_name]',
+				'label'=>'Billing Last Name',
 				'rules'=>'trim|required|alpha'
 			),
 			array(
-				'field'=>'billing[\'address1\']',
-				'label'=>'Address',
+				'field'=>'billings[address1]',
+				'label'=>'Billing Address',
 				'rules'=>'trim|required'
 			),
 			array(
-				'field'=>'billing[\'address2\']',
-				'label'=>'Address Line 2',
+				'field'=>'billings[address2]',
+				'label'=>'Billing Address Line 2',
+				'rules'=>'trim'
+			),
+			array(
+				'field'=>'billings[city]',
+				'label'=>'Billing City',
 				'rules'=>'trim|required'
 			),
 			array(
-				'field'=>'billing[\'city\']',
-				'label'=>'City',
-				'rules'=>'trim|required'
+				'field'=>'billings[state]',
+				'label'=>'Billing State',
+				'rules'=>'trim|required|alpha|exact_length[2]'
 			),
 			array(
-				'field'=>'billing[\'state\']',
-				'label'=>'State',
-				'rules'=>'trim|required|alpha'
-			),
-			array(
-				'field'=>'billing[\'zip\']',
-				'label'=>'Zipcode',
+				'field'=>'billings[zip]',
+				'label'=>'Billing Zipcode',
 				'rules'=>'trim|required|number'
 			),
 			array(
@@ -124,7 +125,8 @@ class Orders extends CI_Controller {
 		{
 			$form = $this->input->post(null,true);
 			$this->load->model('Order');
-			$this->Order->create($form);
+			$this->Order->create_order($form);
+			$this->session->unset_userdata('cart');
 			redirect('/products');
 		}
 	}

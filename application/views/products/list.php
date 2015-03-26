@@ -2,15 +2,15 @@
 	<aside class="col-xs-12 col-sm-4 col-md-3">
 		<form class="form-inline">
 			<div class="form-group">
-				<input type="text" name="search" placeholder="product name" class="form-control">
+				<input type="text" name="search" placeholder="album name" class="form-control">
 			</div>
 			<button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span></button>
 		</form>
 		<p><strong>Categories</strong></p>
 		<ul>
-		<?php foreach($genres as $li)
+		<?php foreach($genres as $key=>$li)
 		{ ?> 
-			<li><a href="/products/genre/<?= $li->id ?>"><?= $li->name ?>(<?= $li->total ?>)</a></li>
+			<li <?= $key<4 ? '' : 'style="display:none"' ?>><a href="/products/genre/<?= $li->id ?>"><?= $li->name ?>(<?= $li->total ?>)</a></li>
 		<?php } ?>
 			<li><a href="/products">Show All</a></li>
 		</ul>
@@ -21,10 +21,10 @@
 			<?php if($pagination) { ?>
 			<div class="hidden-xs col-sm-6">
 				<ul class="pager">
-					<li><a href="">first</a></li>
-					<li><a href="">prev</a></li>
-					<li><span>2</span></li>
-					<li><a href="">last</a></li>
+					<li><?= $pager[0]>0 ? '<a href="/products">first</a>' : '<span>first</span>' ?></li>
+					<li><?= $pager[1]>0 ? '<a href="/products/'.$pager[1].'">prev</a>' : '<span>prev</span>' ?></li>
+					<li><span><?= $pager[2] ?></span></li>
+					<li><?= ($pager[3]!=$pager[2]) ? '<a href="/products/'.$pager[3].'">last</a>' : '<span>last</span>' ?></li>
 				</ul>
 			</div>
 			<?php } ?>
@@ -57,20 +57,24 @@
 			<div class="col-xs-12 text-center">
 			    <ul class="pagination">
 				    <li>
-				      <a href="#" aria-label="Previous">
-				        <span aria-hidden="true">&laquo;</span>
-				      </a>
+				        <?php if($pager[1]>0) {
+				        	echo '<a href="/products/'.$pager[1].'" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>';
+				        } else {
+				        	echo '<span><span aria-hidden="true">&laquo;</span></span>';
+				        } ?>
 				    </li>
-				    <li><a href="#">1</a></li>
-				    <li><a href="#">2</a></li>
-				    <li><a href="#">3</a></li>
-				    <li><a href="#">4</a></li>
-				    <li><a href="#">5</a></li>
+			    	<?php for($i=1;$i<=$pager[3];$i++) { ?>
+				    <li><?= $i != $pager[2] ? '<a href="/products/'.$i.'">'.$i.'</a>' : '<span>'.$i.'</span>' ?></li>
+				    <?php } 
+				    if(($pager[2]+1) <= $pager[3]) { ?>
 				    <li>
-				      <a href="#" aria-label="Next">
+				      <a href="/products/<?= $pager[2]+1 ?>" aria-label="Next">
 				        <span aria-hidden="true">&raquo;</span>
 				      </a>
 				    </li>
+				    <?php } else { ?> 
+				    <li><span><span aria-hidden="true">&raquo;</span></span></li>
+				    <?php } ?>
 			    </ul>
 			</div>
 		</div>
