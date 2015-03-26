@@ -12,7 +12,7 @@ class Product extends CI_Model {
 	}
 	function show_related_album($id)
 	{
-		$query = 'SELECT products.name,products.price,products.image_link FROM similar_products
+		$query = 'SELECT products.id,products.name,products.price,products.image_link FROM similar_products
 				  LEFT JOIN products ON similar_products.similar_id=products.id
 				  WHERE similar_products.product_id=?';
 		return $this->db->query($query,array($id))->result();
@@ -20,13 +20,21 @@ class Product extends CI_Model {
 	function search_albums($form)
 	{
 		$query = 'SELECT * FROM products
-				  LEFT JOIN products_genres ON products.id=products_genres.product_id';
-		$where = '1';
+				  LEFT JOIN products_genres ON products.id=products_genres.product_id ';
+		$where = 'WHERE 1';
 		$values = array();
 		foreach ($form as $col=>$val)
 		{
-			$where .= ' AND '.$col . '=?';
-			$values[]=$val;
+			if($col == 'search')
+			{
+				$where .= ' AND name LIKE ?';
+				$values[] = '%' . $val . '%';
+			}
+			else
+			{
+				$where .= ' AND '.$col . '=?';				
+				$values[]=$val;
+			}
 		}
 		$query .= $where;
 		return $this->db->query($query,$values)->result();
@@ -47,11 +55,15 @@ class Product extends CI_Model {
 		$this->db->query('DELETE FROM products WHERE id = ?', array($id));
 	}
 	function show_genres() {
-		$query = "SELECT genres.id,genres.name,count(*) as total from genres
+		$query = "SELECT genres.id,genres.name,count(products_genres.product_id) as total from genres
 		          left join products_genres on genres.id=products_genres.genre_id
 		          GROUP BY genres.id
 		          ORDER BY total DESC";
 		return $this->db->query($query)->result();
+	}
+	function show_genre($id)
+	{
+		return $this->db->query('SELECT name FROM genres WHERE id=?',array($id))->row();
 	}
 
 }

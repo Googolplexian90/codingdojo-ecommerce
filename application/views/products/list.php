@@ -1,6 +1,6 @@
 <div class="row">
 	<aside class="col-xs-12 col-sm-4 col-md-3">
-		<form class="form-inline">
+		<form class="form-inline" method="get" action="/products/search">
 			<div class="form-group">
 				<input type="text" name="search" placeholder="album name" class="form-control">
 			</div>
@@ -9,9 +9,10 @@
 		<p><strong>Categories</strong></p>
 		<ul>
 		<?php foreach($genres as $li)
-		{ ?> 
+		{ 
+			if($li->total > 0) { ?> 
 			<li><a href="/products/genre/<?= $li->id ?>"><?= $li->name ?>(<?= $li->total ?>)</a></li>
-		<?php } ?>
+		<?php } } ?>
 			<li><a href="/products/0">Show All</a></li>
 		</ul>
 	</aside>
@@ -46,8 +47,8 @@
 		<?php foreach($products as $product)
 		{ ?>
 			<div class="col-xs-4">
-				<img src="/assets/images/<?= $product['image'] ?>">
-				<p><a href="/products/show/<?= $product['id'] ?>"><?= $product['name'] ?></a></p>
+				<a href="/products/show/<?= $product['id'] ?>"><img src="/assets/images/<?= $product['image'] ?>">
+				<p><?= $product['name'] ?></p></a>
 				<p>$<?= $product['price'] ?></p>
 			</div>
 		<?php } ?>

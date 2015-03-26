@@ -16,6 +16,21 @@ class Products extends CI_Controller {
 	{
 		$this->load->view('partials/header',array('title'=>'All Products'));
 		$products = $this->Product->show_all_albums();
+		$this->show_all($products,$page);
+	}
+	public function search($page=1) {
+		$this->load->view('partials/header',array('title'=>'All Products'));
+		$form = $this->input->get(null, true);
+		$products = $this->Product->search_albums($form);
+		$this->show_all($products,$page);
+	}
+	public function genre($id, $page = 0) {
+		$this->load->view('partials/header',array('title'=>'All Products | '.$this->Product->show_genre($id)->name));
+		$products = $this->Product->search_albums(array('products_genres.genre_id'=>$id));
+		$this->show_all($products,$page);
+	}
+	protected function show_all($products,$page)
+	{
 		if(count($products)>15&&$page!=0)
 		{
 			$data['pagination']=true;
@@ -54,25 +69,6 @@ class Products extends CI_Controller {
 		$this->load->view('products/list',$data);
 		$this->load->view('partials/footer');
 	}
-
-	public function search_all() {
-		$form = $this->input->post(null, true);
-		$data = $this->Product->find($form);
-		$this->load->view('products/show_all', $data);
-	}
-
-	public function genre($id, $page = 0) {
-		$this->load->view('partials/header', array('title' => 'All Products | (Genre) '));
-		$search = $this->Product->search_albums(array('products_genres.genre_id'=>$id));
-		foreach($search as $product)
-		{
-			$data['products'][] = array('name'=>$product->name,'price'=>$product->price,'image'=>$product->img);
-		}
-		//$data   = $this->Product->find($search);
-		$this->load->view('products/list', $data);
-		$this->load->view('partials/footer');
-	}
-
 	public function show($id) {
 		$product = $this->Product->show_one_album($id);
 		$this->load->view('partials/header',array('title'=>$product->name.' '));
