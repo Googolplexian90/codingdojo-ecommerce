@@ -22,12 +22,12 @@
 		<?php } 
 		else
 		{ ?>
-			<button type="button" data-toggle="modal" data-target="#create-product">Add new product</button>
+			<button class="btn btn-primary" type="button">Add new product</button>
 		<?php }?>
 	</div>
 </div>
 <div class="row">
-	<div class="col-xs-12">
+	<div id="dashboard-table">
 		<?php $this->load->view('partials/table',$table); ?>
 	</div>
 	<?php if($pagination) { ?>
@@ -40,8 +40,7 @@
 </div>
 <?php if ($table['thead'][0]=='Picture')
 {
-	$data['id']='create-product';
-	$data['title']='Add New Product';
-	$data['action']='/products/create';
-	$this->load->view('products/modal-loader',$data);
+	$data['id']='product-action';
+	$data['modal']=array('title'=>'','html'=>'','footer'=>'');
+	$this->load->view('partials/modal',$data);
 } ?>

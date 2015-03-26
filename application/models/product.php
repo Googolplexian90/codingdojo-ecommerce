@@ -65,6 +65,10 @@ class Product extends CI_Model {
 	{
 		return $this->db->query('SELECT name FROM genres WHERE id=?',array($id))->row();
 	}
+	function get_genres()
+	{
+		return $this->db->query('SELECT * FROM genres LEFT JOIN products_genres ON genres.id=products_genres.genre_id')->result();
+	}
 
 }
 

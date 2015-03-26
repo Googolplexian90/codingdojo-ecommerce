@@ -1,40 +1,26 @@
-/*function customEventListeners()
-{
-	$('form').submit(function(){
-		var action = $(this).attr('action');
-		$.post(action,$(this).serialize(),function(res){
-			$('#container').html(res);
-			customEventListeners();
-		});
-		return false;
+$('#dashboard-table a').click(function(e){
+	e.preventDefault();
+	var id = /\d+/.exec($(this).attr('href'));
+	if($(this).attr('href').indexOf('edit')!== -1)
+	{
+		$('#product-action .modal-title').text('Edit Product - '+id);
+	}
+	else
+	{
+		$('#product-action .modal-title').text('Are you sure you want to delete Product '+id+'?');
+	}
+	$.get($(this).attr('href'),function(res){
+		$('#product-action .modal-body').html(res);
 	});
-	$('button').click(function(){
-
-		var t = $(this).siblings('input:text');
-		if(t.attr('disabled')===undefined) {
-			if(t.attr('readonly')=='readonly')
-			{
-				$(this).siblings('input:text').removeAttr('readonly');
-			}
-			else
-			{
-				$(this).parent().trigger('submit');
-			}
-		}
+	$('#product-action').modal();
+	return false;
+});
+$('.col-xs-6.text-right button').click(function(e){
+	e.preventDefault();
+	$('#product-action .modal-title').text('Add a new Product');
+	$.get('/dashboard/create_product',function(res){
+		$('#product-action .modal-body').html(res);
 	});
-	$(':checkbox').click(function(){
-		var t = $(this).siblings(':text');
-		if($(this).context.checked)
-		{
-			t.attr('disabled','disabled');
-		}
-		else
-		{
-			t.removeAttr('disabled');
-		}
-	});
-}
-$(document).ready(function(){
-	$('.no-js').removeAttr('class');
-	customEventListeners();
-});*/
+	$('#product-action').modal();
+	return false;
+});

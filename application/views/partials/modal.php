@@ -8,9 +8,6 @@
 			<div class="modal-body container-fluid">
 				<?= $modal['html'] ?>
 			</div>
-			<div class="modal-footer">
-				<?= $modal['footer'] ?>
-			</div>
 		</div> <!-- /.modal-content -->
 	</div> <!-- /.modal-dialog -->
 </div> <!-- /.modal -->
