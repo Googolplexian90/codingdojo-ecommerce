@@ -5,7 +5,7 @@ class Order extends CI_Model {
 	function get_all() {
 		$query = 'SELECT * FROM orders
 				  LEFT JOIN billings ON billings.id=orders.billing_id
-				  LEFT JOIN addresses ON addresses.id=billing.address_id';
+				  LEFT JOIN addresses ON addresses.id=billings.address_id';
 		return $this->db->query($query)->result();
 	}
 
