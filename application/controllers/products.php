@@ -19,6 +19,11 @@ class Products extends CI_Controller {
 		if(count($products)>15)
 		{
 			$data['pagination']=true;
+			$data['pager']=array();
+			$data['pager'][] = ($page===1) ? 0 : 1;
+			$data['pager'][] = ($page-1>0) ? $page-1 : 0;
+			$data['pager'][] = $page;
+			$data['pager'][] = ceil(count($products)/15);
 			$offset = ($page-1) * 15;
 			for($i=0;$i<count($products);)
 			{
@@ -29,6 +34,7 @@ class Products extends CI_Controller {
 				elseif($offset>0)
 				{
 					array_shift($products);
+					$offset--;
 				}
 				else
 				{

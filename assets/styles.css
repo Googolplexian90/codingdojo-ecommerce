@@ -86,14 +86,19 @@ img
 	height: auto;
 	max-width: 100%;
 }
-.thumb
+aside ul
 {
-	max-width: 150px;
+  list-style: outside none;
+}
+#listing > div
+{
+  height: 250px;
 }
 
 @media screen and (min-width: 768px) {
 	#listing > div
 	{
 		width: 20%;
+    height: 300px;
 	}
 }

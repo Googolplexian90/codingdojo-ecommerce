@@ -49,7 +49,8 @@ class Product extends CI_Model {
 	function show_genres() {
 		$query = "SELECT genres.id,genres.name,count(*) as total from genres
 		          left join products_genres on genres.id=products_genres.genre_id
-		          group by genres.id";
+		          GROUP BY genres.id
+		          ORDER BY total DESC";
 		return $this->db->query($query)->result();
 	}
 
